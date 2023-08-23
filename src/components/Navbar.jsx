@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "./../images/logo.png";
+import { logo } from "../images";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import Button from "./Button";
@@ -12,7 +12,7 @@ const Navbar = () => {
           href="/"
           className="flex justify-center items-center text-white text-lg cursor-pointer"
         >
-          <img src={Logo} alt="logo" className="w-[50px]" />
+          <img src={logo} alt="logo" className="w-[50px]" />
           Flavor <span>Verse</span>
         </a>
         <ul className="hidden md:flex text-white gap-x-5">

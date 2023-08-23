@@ -3,5 +3,6 @@ import Banner2 from "./banner2.jpeg";
 import Banner3 from "./banner3.jpeg";
 import Banner4 from "./banner4.webp";
 import Banner5 from "./banner5.webp";
+import logo from "./logo.png";
 
-export { Banner1, Banner2, Banner3, Banner4, Banner5 };
+export { Banner1, Banner2, Banner3, Banner4, Banner5, logo };
