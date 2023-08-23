@@ -12,7 +12,7 @@ const Navbar = () => {
           href="/"
           className="flex justify-center items-center text-white text-lg cursor-pointer"
         >
-          <img src={Logo} alt="logo" className="w-[50px]" />
+          <img src={"./../images/Logo.png"} alt="logo" className="w-[50px]" />
           Flavor <span>Verse</span>
         </a>
         <ul className="hidden md:flex text-white gap-x-5">
