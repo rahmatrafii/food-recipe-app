@@ -9,7 +9,7 @@ const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("Vegan");
   const [limit, setLimit] = useState(30);
-  const [loading, setLoading] = useState(false);
+  const [isEmpty, setIsEmpty] = useState("wait");
   const [showMoreLoading, setShowMoreLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -19,12 +19,18 @@ const Recipes = () => {
   const fetchRecipe = async () => {
     try {
       const data = await fetchRecipes({ query, limit });
-      setRecipes(data);
-      setLoading(false);
+      console.log(data);
+      if (data.length > 0) {
+        setRecipes(data);
+        setIsEmpty("true");
+      }
+      {
+        setIsEmpty("false");
+      }
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false);
+      setIsEmpty("false");
       setShowMoreLoading(false);
     }
   };
@@ -39,13 +45,9 @@ const Recipes = () => {
   }, [limit]);
 
   useEffect(() => {
-    setLoading(true);
     fetchRecipe();
   }, []);
 
-  if (loading) {
-    return <Loading />;
-  }
   return (
     <div className="w-full">
       <div className="w-full flex items-center justify-center pt-10 pb-5 px-0 md:px-10 ">
@@ -67,7 +69,7 @@ const Recipes = () => {
         </form>
       </div>
 
-      {recipes?.length > 0 ? (
+      {isEmpty === "true" && (
         <>
           <div className="w-full  flex flex-wrap gap-10 px-0 lg:px-10 py-10">
             {recipes?.map((item, index) => (
@@ -87,11 +89,15 @@ const Recipes = () => {
             )}
           </div>
         </>
-      ) : (
+      )}
+
+      {isEmpty === "false" && (
         <div className="text-white w-full items-center justify-center py-10">
           <p className="text-center">No Recipe Found</p>
         </div>
       )}
+
+      {isEmpty === "wait" && <Loading />}
     </div>
   );
 };

@@ -8,7 +8,7 @@ const RecipeCard = ({ recipe }) => {
   const id = uri?.split("#")[1];
 
   return (
-    <Link to={`/recipes/${id}`} className="w-full md:w-[220px]">
+    <Link to={`/recipes/${id}#`} className="w-full md:w-[220px]">
       <div className="bg-_gradient shadow w-full rounded-lg">
         <img
           src={image}

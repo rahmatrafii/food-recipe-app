@@ -1,6 +1,3 @@
-import React from "react";
-// import { Banner1, Banner2, Banner3, Banner4, Banner5 } from "/images/";
-
 import { Banner1, Banner2, Banner3, Banner4, Banner5 } from "./../images/";
 const images = [Banner1, Banner2, Banner3, Banner4, Banner5];
 const Header = ({ title, image, type }) => {

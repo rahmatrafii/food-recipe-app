@@ -35,6 +35,7 @@ const RecipeDetail = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getRecipe(id);
   }, [id]);
 
@@ -45,11 +46,9 @@ const RecipeDetail = () => {
       </div>
     );
   }
-  console.log(recipe);
   return (
     <div className="w-full">
       <Header title={recipe?.label} image={recipe?.image} />
-
       <div className="w-full px-4 lg:px-20 pt-5">
         <div className="flex gap-10 items-center justify-center px-4">
           <div className="flex flex-col justify-between">
