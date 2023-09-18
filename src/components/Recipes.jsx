@@ -19,24 +19,24 @@ const Recipes = () => {
   const fetchRecipe = async () => {
     try {
       const data = await fetchRecipes({ query, limit });
-      console.log(data);
       if (data.length > 0) {
         setRecipes(data);
         setIsEmpty("true");
-      }
-      {
+      } else {
         setIsEmpty("false");
       }
     } catch (error) {
       console.log(error);
     } finally {
-      setIsEmpty("false");
       setShowMoreLoading(false);
     }
   };
   const handleSearchedRecipe = async (e) => {
     e.preventDefault();
-    fetchRecipe();
+    if (query.length > 0) {
+      setIsEmpty("wait");
+      fetchRecipe();
+    }
   };
 
   useEffect(() => {
@@ -77,17 +77,17 @@ const Recipes = () => {
             ))}
           </div>
 
-          <div className="flex w-full items-center justify-center py-10">
-            {showMoreLoading ? (
-              <Loading />
-            ) : (
+          {showMoreLoading ? (
+            <Loading />
+          ) : (
+            <div className="flex w-full items-center justify-center py-10">
               <Button
                 title="Show More"
                 className="bg-green-800 text-white  px-3 py-1 rounded-full text-sm"
                 handleClick={() => setLimit((prev) => prev + 10)}
               />
-            )}
-          </div>
+            </div>
+          )}
         </>
       )}
 
